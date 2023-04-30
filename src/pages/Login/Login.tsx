@@ -31,7 +31,7 @@ const Login = () => {
         />
       </span>
 
-      <Buttom onClick={() => handleClick()}>SignIn</Buttom>
+      <Buttom onClick={handleClick}>SignIn</Buttom>
     </S.ContainerLogin>
   );
 };
