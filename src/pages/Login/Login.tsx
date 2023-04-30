@@ -9,7 +9,7 @@ const Login = () => {
   const navigate = useNavigate();
   const handleClick = () => {
     if (login === "jobel" && password === process.env.REACT_APP_PASSWORD) {
-      return navigate("/PageList");
+      navigate("/PageList");
     }
   };
   return (
@@ -31,7 +31,7 @@ const Login = () => {
         />
       </span>
 
-      <Buttom onClick={handleClick}>SignIn</Buttom>
+      <Buttom onClick={() => handleClick()}>SignIn</Buttom>
     </S.ContainerLogin>
   );
 };
