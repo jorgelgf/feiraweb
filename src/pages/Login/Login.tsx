@@ -8,7 +8,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const handleClick = () => {
-    if (login === "jobel" && password === "123") {
+    if (login === "jobel" && password === process.env.REACT_APP_PASSWORD) {
       navigate("/PageList");
     }
   };
