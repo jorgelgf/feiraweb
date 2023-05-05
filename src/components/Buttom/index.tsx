@@ -1,7 +1,7 @@
 import * as S from "./styles";
 interface ButtomProps {
   children: string;
-  onClick: () => void;
+  onClick?: () => void;
   SX?: object;
 }
 const Buttom = ({ children, onClick, SX }: ButtomProps) => {

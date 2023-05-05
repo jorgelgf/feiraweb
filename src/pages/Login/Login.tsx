@@ -8,30 +8,28 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const handleClick = () => {
-    alert(`oi ${process.env.REACT_APP_PASSWORD}`);
     if (login === "jobel" && password === process.env.REACT_APP_PASSWORD) {
       navigate("/PageList");
     }
   };
   return (
     <S.ContainerLogin>
-      <span>
-        LOGIN:{" "}
+      <div>
         <Input
           type="text"
+          name="LOGIN"
           value={login}
           onChange={(event) => setLogin(event.target.value)}
         />
-      </span>
-      <span>
-        PASSWORD:{" "}
+      </div>
+      <div>
         <Input
           type="password"
+          name="PASSWORD"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
-      </span>
-
+      </div>
       <Buttom onClick={handleClick}>SignIn</Buttom>
     </S.ContainerLogin>
   );

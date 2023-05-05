@@ -1,7 +1,6 @@
 import Layout from "./pages/Layout/Layout";
 import styled from "styled-components";
 import Routs from "./pages/Routs";
-
 function App() {
   return (
     <Container>
@@ -19,6 +18,6 @@ export const Container = styled.div`
   align-items: start;
   justify-content: center;
   width: 100%;
-  height: 100vh;
-  background-color: #e0e0ff;
+  height: auto;
+  background-color: #061727;
 `;

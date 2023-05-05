@@ -6,7 +6,8 @@ export const Container = styled.div`
   align-items: start;
   justify-content: start;
   width: 300px;
-  height: 100vh;
-  background-color: #ffffffca;
+  min-height: 100vh;
+  height: auto;
+  background-color: transparent;
   border: none;
 `;

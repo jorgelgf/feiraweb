@@ -8,7 +8,7 @@ export const HeaderContainer = styled.header`
   font-size: 1rem;
   width: 300px;
   height: 2rem;
-  background-color: #2e84cf;
+  background-color: transparent;
   color: #caf1f8;
   font-weight: 600;
 `;

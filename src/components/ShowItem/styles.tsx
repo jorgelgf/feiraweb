@@ -7,4 +7,11 @@ export const ContainerItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 4px;
+  span {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;

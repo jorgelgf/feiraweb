@@ -4,16 +4,26 @@ interface InputProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
   type: string;
+  name?: string;
+  SX?: object;
 }
 
-const Input = ({ onChange, value, type }: InputProps) => {
+const Input = ({ onChange, value, type, name, SX }: InputProps) => {
   const handleSubmit = (event: FormEvent) => {
     event?.preventDefault();
   };
+
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <S.Input onChange={onChange} value={value} type={type} />
+      <form onSubmit={handleSubmit} style={{ transition: "all 0.2s" }}>
+        <S.Input
+          onChange={onChange}
+          style={SX}
+          value={value}
+          type={type}
+          required
+        />
+        <span>{name}</span>
       </form>
     </>
   );

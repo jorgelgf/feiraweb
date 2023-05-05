@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const Input = styled.input`
+  font-size: 1rem;
   border-radius: 5px;
-  padding: 0.5rem;
-  outline-color: #1289ce;
+  padding: 1rem;
+  outline: none;
+  border: 1px solid #ccc;
 `;

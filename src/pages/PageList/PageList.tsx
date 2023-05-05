@@ -10,10 +10,11 @@ import {
   collection,
   getDocs,
   addDoc,
-  doc,
-  deleteDoc,
 } from "firebase/firestore/lite";
 import { initializeApp } from "firebase/app";
+import { useNavigate } from "react-router-dom";
+import Modal from "../../components/Modal";
+import { DivLoading } from "../../components/Loading/styles";
 
 const PageList = () => {
   const [state, setState] = useState("");
@@ -22,10 +23,12 @@ const PageList = () => {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   const data = collection(db, "lista");
+  const navigate = useNavigate();
+
   useEffect(() => {
     async function getList() {
       try {
-        let dataShot = await getDocs(data);
+        const dataShot = await getDocs(data);
         const dataList = dataShot.docs.map((doc) => ({
           ...doc.data(),
           id: doc.id,
@@ -36,47 +39,76 @@ const PageList = () => {
       }
     }
     getList();
-  }, [data]);
+    /*eslint-disable*/
+  }, []);
+  const getList = async () => {
+    const dataShot = await getDocs(data);
+    const dataList = dataShot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+    setList(dataList);
+
+    return navigate("/PageList");
+  };
 
   const handleClick = async () => {
     setValidation(true);
     await addDoc(data, {
       state,
     });
+    getList();
   };
-
-  const handleClickDelete = async (id: any) => {
-    const stateDoc = doc(db, "lista", id);
-    await deleteDoc(stateDoc);
-  };
-
+  console.log(list.length);
   return (
     <S.ContainerPageList>
+      <Buttom
+        SX={{ backgroundColor: "#81cff3", color: "#28353b" }}
+        onClick={() => getList()}
+      >
+        ATUALIZAR
+      </Buttom>
       <div>
-        PRODUTO:
         <Input
           type="text"
           value={state}
+          SX={{ width: "auto" }}
           onChange={(event) => setState(event.target.value)}
         />
-        <Buttom onClick={handleClick}>ADC</Buttom>
+        <Buttom onClick={handleClick} SX={{ width: "3rem", height: "2rem" }}>
+          +
+        </Buttom>
       </div>
       {validation && (
         <>
           <>
-            {list &&
+            {list.length !== 1 ? (
               list.map((item: any, index) => {
                 return (
                   <ShowItem key={index}>
-                    {item.state && Object.values(item.state)}
-                    <FaRegTrashAlt
-                      onClick={() => handleClickDelete(item.id)}
-                      size={20}
-                      style={{ cursor: "pointer" }}
-                    />
+                    <span>{item.state && Object.values(item.state)}</span>
+                    <Modal id={item.id}>
+                      <FaRegTrashAlt
+                        size={20}
+                        style={{
+                          cursor: "pointer",
+                          display: "flex",
+                          marginBottom: "15px",
+                        }}
+                      />
+                    </Modal>
                   </ShowItem>
                 );
-              })}
+              })
+            ) : (
+              <div
+                style={{
+                  marginTop: "5rem",
+                }}
+              >
+                <DivLoading />
+              </div>
+            )}
           </>
         </>
       )}
