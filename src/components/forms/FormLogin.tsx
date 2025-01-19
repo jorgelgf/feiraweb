@@ -15,6 +15,7 @@ export type FormLoginTypes = {
 }
 
 export const FormLogin = ({ fields }: FormLoginTypes) => {
+
   const handleSubmitLogin = () => {
     event?.preventDefault()
     alert('ola')
@@ -27,7 +28,7 @@ export const FormLogin = ({ fields }: FormLoginTypes) => {
           return (
             <form key={key} className='flex flex-col pt-4' onSubmit={handleSubmitLogin}>
               <div >
-                <label className=' text-sm font-medium text-zinc-500'>
+                <label htmlFor={item.label} className=' text-sm font-medium text-zinc-500'>
                   {item.label}
                 </label>
 
@@ -35,12 +36,14 @@ export const FormLogin = ({ fields }: FormLoginTypes) => {
                   item.require ?
                     (
                       <Input
+                        id={item.label}
                         required
                         onChange={() => null}
                         type={item.type}
                         placeholder={item.placeholder} />) :
                     (
                       <Input
+                        id={item.label}
                         onChange={() => null}
                         type={item.type}
                         placeholder={item.placeholder} />
@@ -51,16 +54,7 @@ export const FormLogin = ({ fields }: FormLoginTypes) => {
           )
         })}
         <div>
-          <text className='
-                    cursor-pointer
-                    w-full 
-                    flex flex-1  
-                    justify-end 
-                    items-center
-                    font-medium
-                    text-zinc-500
-                    pt-2 
-                    text-[0.7rem]'>
+          <text className={constants.classNameForgotText}>
             {constants.forgotPass}
           </text>
         </div>
