@@ -17,7 +17,6 @@ export const formFields: FormLoginProps[] = [
     require: true
   },
 ];
-
 export const textField = {
   title: 'Faça o login com seu e-mail',
   subtitle: ' Faça os seus registros de maneira simples e eficiente!'

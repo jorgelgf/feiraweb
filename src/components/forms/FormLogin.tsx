@@ -59,10 +59,8 @@ export const FormLogin = ({ fields }: FormLoginTypes) => {
           </text>
         </div>
         <div className='mt-2 w-full flex justify-end pt-1'>
-
           <Button className='w-full' >{constants.textButtonToEnter}</Button>
         </div>
       </div>
-
     ) : (null)
 }
