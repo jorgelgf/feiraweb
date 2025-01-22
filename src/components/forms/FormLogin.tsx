@@ -36,6 +36,7 @@ export const FormLogin = ({ fields }: FormLoginTypes) => {
                 <Input
                   id={item.label}
                   required
+                  className='mb-3'
                   onChange={(event) => {
                     if (item.label === 'Email') {
                       return setEmail(event?.target.value)
@@ -53,6 +54,7 @@ export const FormLogin = ({ fields }: FormLoginTypes) => {
               {constants.forgotPass}
             </div>
           </div>
+
           <div className='mt-2 w-full flex justify-end pt-1'>
             <Button type='submit' className='w-full' >{constants.textButtonToEnter}</Button>
           </div>
