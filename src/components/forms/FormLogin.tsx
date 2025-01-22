@@ -1,7 +1,7 @@
 import { Input } from "@/components/ui/input"
 import { Button } from '../ui/button'
 import { constants } from './constants'
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { FcGoogle } from "react-icons/fc";
 
 export interface FormLoginProps {
@@ -19,7 +19,7 @@ export type FormLoginTypes = {
 export const FormLogin = ({ fields }: FormLoginTypes) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('')
-  const handleSubmitLogin = () => {
+  const handleSubmitLogin = (event: FormEvent) => {
     event?.preventDefault()
     alert(`${email} || ${password} `)
   }
@@ -27,7 +27,6 @@ export const FormLogin = ({ fields }: FormLoginTypes) => {
     (
       <div>
         <form className='flex flex-col pt-4' onSubmit={handleSubmitLogin}>
-
           {fields.map((item, key) => {
             return (
               <div key={key}>
@@ -60,7 +59,7 @@ export const FormLogin = ({ fields }: FormLoginTypes) => {
         </form>
         <div className='flex justify-center items-center mt-4  flex-col'>
           <span className={constants.classNameTextToEnterWithGoogle}>{constants.textEnterWhitGoogle}</span>
-          <span className={constants.classNameDivIconGoogle}><FcGoogle /></span>
+          <span className={constants.classNameDivIconGoogle}><FcGoogle data-testid='iconGoogle' /></span>
         </div>
       </div>
     ) : (null)
