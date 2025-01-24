@@ -3,6 +3,9 @@ import { Button } from '../ui/button'
 import { constants } from './constants'
 import { FormEvent, useState } from 'react'
 import { FcGoogle } from "react-icons/fc";
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState, AppDispatch } from './../../store';
+import { validationModal } from './../../store';
 
 export interface FormLoginProps {
   label?: string
@@ -14,15 +17,22 @@ export interface FormLoginProps {
 
 export type FormLoginTypes = {
   fields: FormLoginProps[]
-}
 
+}
 export const FormLogin = ({ fields }: FormLoginTypes) => {
+  const dispatch: AppDispatch = useDispatch();
+  const isModalActive = useSelector((state: RootState) => state.modalForgotPassword.isModalActive);
+
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('')
   const handleSubmitLogin = (event: FormEvent) => {
     event?.preventDefault()
     alert(`${email} || ${password} `)
   }
+
+  const handleToggleModal = () => dispatch(validationModal({ isModalActive: !isModalActive }));
+  console.log(isModalActive)
   return fields ?
     (
       <div>
@@ -50,7 +60,7 @@ export const FormLogin = ({ fields }: FormLoginTypes) => {
             )
           })}
           <div>
-            <div className={constants.classNameForgotText}>
+            <div onClick={handleToggleModal} className={constants.classNameForgotText}>
               {constants.forgotPass}
             </div>
           </div>

@@ -1,3 +1,15 @@
+import { Layout } from '@/components'
+
+
+
 export const Home = () => {
-  return <main>Home</main>
+  return (
+    <Layout >
+
+      <main className='bg-red-400 flex flex-1'>
+      </main>
+
+
+
+    </Layout>)
 }

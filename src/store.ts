@@ -15,14 +15,26 @@ const authSlice = createSlice({
   },
 });
 
+const stateModal = createSlice({
+  name: 'modalForgotPassword',
+  initialState: { isModalActive: false },
+  reducers: {
+    validationModal: (state, action) => {
+      state.isModalActive = action.payload.isModalActive
+    }
+  }
+
+})
 export const store = configureStore({
   reducer: {
     auth: authSlice.reducer,
+    modalForgotPassword: stateModal.reducer,
   },
 });
 
 
 export const { login, logout } = authSlice.actions;
+export const { validationModal } = stateModal.actions;
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

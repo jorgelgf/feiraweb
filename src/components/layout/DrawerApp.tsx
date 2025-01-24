@@ -1,11 +1,12 @@
 export const DrawerApp = () => {
+
+  const classNameDiv = 'h1 w-4 border-1 border-b-2 border-zinc-500 h-2 '
   return (
-    <>
-      <div className='w-30 border-2'>
-        <div className="h1 w-full" />
-        <div className="h1 w-full" />
-        <div className="h1 w-full" />
-      </div>
-    </>
+
+    <div className='cursor-pointer border-2 border-white p-3 rounded-md hover:shadow-md'>
+      <div className={classNameDiv} > </div>
+      <div className={classNameDiv}></div>
+      <div className={classNameDiv}></div>
+    </div>
   )
 }
