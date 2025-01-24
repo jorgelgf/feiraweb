@@ -3,9 +3,9 @@ import { Button } from '../ui/button'
 import { constants } from './constants'
 import { FormEvent, useState } from 'react'
 import { FcGoogle } from "react-icons/fc";
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState, AppDispatch } from './../../store';
-import { validationModal } from './../../store';
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState, AppDispatch } from './../../store'
+import { validationModal } from './../../store'
 
 export interface FormLoginProps {
   label?: string
@@ -17,22 +17,22 @@ export interface FormLoginProps {
 
 export type FormLoginTypes = {
   fields: FormLoginProps[]
-
 }
+
 export const FormLogin = ({ fields }: FormLoginTypes) => {
-  const dispatch: AppDispatch = useDispatch();
-  const isModalActive = useSelector((state: RootState) => state.modalForgotPassword.isModalActive);
-
-
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const dispatch: AppDispatch = useDispatch()
+
+  const isModalActive = useSelector((state: RootState) => state.modalForgotPassword.isModalActive)
+
   const handleSubmitLogin = (event: FormEvent) => {
     event?.preventDefault()
     alert(`${email} || ${password} `)
   }
 
-  const handleToggleModal = () => dispatch(validationModal({ isModalActive: !isModalActive }));
-  console.log(isModalActive)
+  const handleToggleModal = () => dispatch(validationModal({ isModalActive: !isModalActive }))
+
   return fields ?
     (
       <div>
@@ -40,7 +40,7 @@ export const FormLogin = ({ fields }: FormLoginTypes) => {
           {fields.map((item, key) => {
             return (
               <div key={key}>
-                <label htmlFor={item.label} className=' text-sm font-medium text-zinc-500'>
+                <label htmlFor={item.label} className='styleLabel'>
                   {item.label}
                 </label>
                 <Input
@@ -64,7 +64,6 @@ export const FormLogin = ({ fields }: FormLoginTypes) => {
               {constants.forgotPass}
             </div>
           </div>
-
           <div className='mt-2 w-full flex justify-end pt-1'>
             <Button type='submit' className='w-full' >{constants.textButtonToEnter}</Button>
           </div>

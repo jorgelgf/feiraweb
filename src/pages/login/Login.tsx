@@ -1,15 +1,13 @@
-import { Layout } from '../../components'
+import { Layout, ModalForgotPassword } from '../../components'
 import { LoginCard } from './Login.Card'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState, validationModal } from '../../store';
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store';
 import { Modal } from '@/components/modal/Modal';
 export const Login = () => {
-  const dispatch = useDispatch()
   const isModalActive = useSelector((state: RootState) => state.modalForgotPassword.isModalActive);
-  const handleClickCloseModal = () => dispatch(validationModal({ isModalActive: !isModalActive }))
   return (
     <Layout>
-      {isModalActive && <Modal onClick={handleClickCloseModal} />}
+      {isModalActive && <Modal ><ModalForgotPassword /></Modal>}
       <article
         className='
         w-full flex 
@@ -19,5 +17,5 @@ export const Login = () => {
       >
         <LoginCard />
       </article>
-    </Layout>)
+    </Layout >)
 }

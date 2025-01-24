@@ -81,3 +81,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+
+.styleLabel {
+  @apply text-sm font-medium text-zinc-500;
+}
