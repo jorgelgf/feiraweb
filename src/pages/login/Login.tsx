@@ -1,10 +1,9 @@
 import { Layout, ModalForgotPassword } from '../../components'
 import { LoginCard } from './Login.Card'
-import { useSelector } from 'react-redux'
-import { RootState } from '../../store';
 import { Modal } from '@/components/modal/Modal';
+import { useLogin } from './Login.model';
 export const Login = () => {
-  const isModalActive = useSelector((state: RootState) => state.modalForgotPassword.isModalActive);
+  const { isModalActive } = useLogin();
   return (
     <Layout>
       {isModalActive && <Modal ><ModalForgotPassword /></Modal>}

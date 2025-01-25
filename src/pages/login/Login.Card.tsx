@@ -3,7 +3,6 @@ import { LogInIcon } from 'lucide-react'
 import { formFields, textField } from './Login.constants'
 
 export const LoginCard = () => {
-
   return (
     <Card>
       <div className='py-3 flex flex-col items-center flex-1'>

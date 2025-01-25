@@ -1,11 +1,8 @@
 import { Input } from "@/components/ui/input"
 import { Button } from '../ui/button'
 import { constants } from './constants'
-import { FormEvent, useState } from 'react'
 import { FcGoogle } from "react-icons/fc";
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState, AppDispatch } from './../../store'
-import { validationModal } from './../../store'
+import { useFormLogin } from './FormLogin.model';
 
 export interface FormLoginProps {
   label?: string
@@ -20,18 +17,7 @@ export type FormLoginTypes = {
 }
 
 export const FormLogin = ({ fields }: FormLoginTypes) => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const dispatch: AppDispatch = useDispatch()
-
-  const isModalActive = useSelector((state: RootState) => state.modalForgotPassword.isModalActive)
-
-  const handleSubmitLogin = (event: FormEvent) => {
-    event?.preventDefault()
-    alert(`${email} || ${password} `)
-  }
-
-  const handleToggleModal = () => dispatch(validationModal({ isModalActive: !isModalActive }))
+  const { handleSubmitLogin, setEmail, setPassword, handleToggleModal } = useFormLogin();
 
   return fields ?
     (
