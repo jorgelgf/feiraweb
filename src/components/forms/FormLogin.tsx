@@ -1,8 +1,8 @@
 import { Input } from "@/components/ui/input"
 import { Button } from '../ui/button'
 import { constants } from './constants'
-import { FcGoogle } from "react-icons/fc";
-import { useModalValidationForgotPassword } from '@/hooks/use-ModalValidationForgotPassword';
+import { useModalValidationForgotPassword } from '@/hooks/use-ModalValidationForgotPassword'
+import { ButtonLoginGoogle } from '../buttonLoginGoogle/ButtonLoginGoogle'
 export interface FormLoginProps {
   label?: string
   type?: string
@@ -54,8 +54,7 @@ export const FormLogin = ({ fields }: FormLoginTypes) => {
           </div>
         </form>
         <div className='flex justify-center items-center mt-4  flex-col'>
-          <span className={constants.classNameTextToEnterWithGoogle}>{constants.textEnterWhitGoogle}</span>
-          <span className={constants.classNameDivIconGoogle}><FcGoogle data-testid='iconGoogle' /></span>
+          <ButtonLoginGoogle />
         </div>
       </div>
     ) : (null)
