@@ -1,5 +1,5 @@
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
-import { DrawerApp } from './DrawerApp';
+import { DrawerApp } from '../drawer/DrawerApp';
 import { constants } from './constants';
 
 export const Header = () => {
