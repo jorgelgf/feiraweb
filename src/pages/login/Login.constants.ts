@@ -21,3 +21,7 @@ export const textField = {
   title: 'Faça o login com seu e-mail',
   subtitle: ' Faça os seus registros de maneira simples e eficiente!'
 }
+
+export const constants = {
+  articleClassName: 'w-full flex flex-col justify-center items-center'
+}

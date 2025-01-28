@@ -1,20 +1,32 @@
-import { Layout, ModalForgotPassword } from '../../components'
+import { lazy, Suspense } from 'react'
+import { Layout } from '../../components'
 import { LoginCard } from './Login.Card'
-import { Modal } from '@/components/modal/Modal';
-import { useLogin } from './Login.model';
+import { useModalValidationForgotPassword } from '@/hooks/use-ModalValidationForgotPassword'
+
+import { constants } from './Login.constants'
+import { Modal } from '@/components/modal/Modal'
+
+const ModalForgot = lazy(async () => import('@/components/modal/ModalForgotPassword'))
+
 export const Login = () => {
-  const { isModalActive } = useLogin();
+
+  const { isModalActive } = useModalValidationForgotPassword()
+
   return (
     <Layout>
-      {isModalActive && <Modal ><ModalForgotPassword /></Modal>}
-      <article
-        className='
-        w-full flex 
-        flex-col 
-        justify-center 
-        items-center'
-      >
-        <LoginCard />
-      </article>
-    </Layout >)
+      <Suspense>
+        {isModalActive && (
+          <Modal>
+            <ModalForgot />
+          </Modal>)
+        }
+        <article
+          className={constants.articleClassName}>
+          <LoginCard />
+        </article>
+      </Suspense>
+    </Layout >
+  )
 }
+
+

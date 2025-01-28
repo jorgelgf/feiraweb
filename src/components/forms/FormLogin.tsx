@@ -2,8 +2,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from '../ui/button'
 import { constants } from './constants'
 import { FcGoogle } from "react-icons/fc";
-import { useFormLogin } from './FormLogin.model';
-
+import { useModalValidationForgotPassword } from '@/hooks/use-ModalValidationForgotPassword';
 export interface FormLoginProps {
   label?: string
   type?: string
@@ -17,7 +16,7 @@ export type FormLoginTypes = {
 }
 
 export const FormLogin = ({ fields }: FormLoginTypes) => {
-  const { handleSubmitLogin, setEmail, setPassword, handleToggleModal } = useFormLogin();
+  const { handleSubmitLogin, setEmail, setPassword, handleToggleModal } = useModalValidationForgotPassword();
 
   return fields ?
     (

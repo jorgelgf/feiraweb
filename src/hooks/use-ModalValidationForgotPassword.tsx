@@ -2,7 +2,7 @@ import { AppDispatch, RootState, validationModal } from '@/store'
 import { FormEvent, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-export const useFormLogin = () => {
+export const useModalValidationForgotPassword = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const dispatch: AppDispatch = useDispatch()
